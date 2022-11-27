@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kompozyt", "Kompozyt\Kompoz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pełnomocnik 1", "Pełnomocnik 1\Pełnomocnik 1.csproj", "{6DD72150-7BD0-4A86-B54C-9C72CB644675}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pełnomocnik 2", "Pełnomocnik 2\Pełnomocnik 2.csproj", "{E5D7BCC8-052F-434C-9EE4-31BB15B982E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6DD72150-7BD0-4A86-B54C-9C72CB644675}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DD72150-7BD0-4A86-B54C-9C72CB644675}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DD72150-7BD0-4A86-B54C-9C72CB644675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5D7BCC8-052F-434C-9EE4-31BB15B982E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5D7BCC8-052F-434C-9EE4-31BB15B982E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5D7BCC8-052F-434C-9EE4-31BB15B982E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5D7BCC8-052F-434C-9EE4-31BB15B982E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
