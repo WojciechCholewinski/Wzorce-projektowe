@@ -9,16 +9,19 @@ namespace Pelnomocnik
 
         private bool HasAdminPrivilages;
 
-        // konstruktor? jak jest tworzony obiekt?
+        public User(bool HasAdminPrivilages)
+        {
+            this.HasAdminPrivilages = HasAdminPrivilages;
+        }
 
         public void MakeAdmin()
         {
-            // co robi?
+            this.HasAdminPrivilages = true;
         }
 
         public bool IsAdmin()
         {
-            // co zwraca?
+            return this.HasAdminPrivilages;
         }
 
     }
@@ -36,13 +39,29 @@ namespace Pelnomocnik
 
         public Database()
         {
-            // stworzenie bazy użytkowników
-            // i uzupełnienie wartości
+            Map = new Dictionary<string, double>();
+            Map.Add($"Zyzio MacKwacz", 2500);
+            Map.Add("Scooby Doo", 11.4);
+            Map.Add("Adam Mackiewicz", 15607.95);
+            Map.Add("Rick Morty", 429.18);
         }
 
-        // wyświetlenie listy użytkowników
+        public void DisplayData()
+        {
+            Console.WriteLine("Użytkownicy:"); 
+            foreach (var item in Map)
+            {
+                Console.WriteLine(item.Key);
+            }
+        }
 
-        // wyświetlenie ujawniające zarobki
+        public void DisplayRestrictedData()
+        {
+            foreach (var item in Map)
+            {
+                Console.WriteLine($"{item.Key} zarabia {item.Value} zł miesięcznie");
+            }
+        }
 
     }
 
@@ -54,8 +73,8 @@ namespace Pelnomocnik
 
         public DatabaseGuard(User u)
         {
-            // stworzenie obiektu DB i przypisanie do pola
-            // u? pewnie pole ;)
+            DB = new Database();
+            user = u;
         }
 
         public void DisplayData()
@@ -65,7 +84,14 @@ namespace Pelnomocnik
 
         public void DisplayRestrictedData()
         {
-            // sprawdzenie uprawnień i odpowienie działanie
+            if (user.IsAdmin())
+            {
+                DB.DisplayRestrictedData();
+            }
+            else
+            {
+                Console.WriteLine("Nie masz wystarczających uprawnień");
+            }
         }
 
     }
