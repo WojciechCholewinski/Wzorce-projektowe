@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kompozyt", "Kompozyt\Kompozyt.csproj", "{DEADDC34-2E23-4A1C-80D6-D754DE66CEBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kompozyt", "Kompozyt\Kompozyt.csproj", "{DEADDC34-2E23-4A1C-80D6-D754DE66CEBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pełnomocnik 1", "Pełnomocnik 1\Pełnomocnik 1.csproj", "{6DD72150-7BD0-4A86-B54C-9C72CB644675}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pełnomocnik 1", "Pełnomocnik 1\Pełnomocnik 1.csproj", "{6DD72150-7BD0-4A86-B54C-9C72CB644675}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pełnomocnik 2", "Pełnomocnik 2\Pełnomocnik 2.csproj", "{E5D7BCC8-052F-434C-9EE4-31BB15B982E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pełnomocnik 2", "Pełnomocnik 2\Pełnomocnik 2.csproj", "{E5D7BCC8-052F-434C-9EE4-31BB15B982E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyłek", "Pyłek\Pyłek.csproj", "{26C43056-11EC-4294-A00C-9827129560CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E5D7BCC8-052F-434C-9EE4-31BB15B982E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5D7BCC8-052F-434C-9EE4-31BB15B982E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5D7BCC8-052F-434C-9EE4-31BB15B982E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26C43056-11EC-4294-A00C-9827129560CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26C43056-11EC-4294-A00C-9827129560CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26C43056-11EC-4294-A00C-9827129560CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26C43056-11EC-4294-A00C-9827129560CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
