@@ -3,50 +3,67 @@ using System.Collections.Generic;
 
 namespace Pylek
 {
-
-    public enum Type { LargeTree, Tree } // czy to wszystkie typy?
-
+    public enum Type { LargeTree, Tree, Bush }
     public interface Plant
     {
         void Display(int positionX, int positionY);
     }
-
     public class LargeTree : Plant
     {
-        // pole na nazwę pliku?
-
+        private string Texture = "large_tree.png";
         public void Display(int x, int y)
         {
-            Console.WriteLine($"Duże drzewo (plik \"{Texture}\") znajduje się na pozycji {x},{y}\n");
+            Console.WriteLine($"Duże drzewo (plik \"{Texture}\") znajduje się na pozycji {x},{y}");
         }
     }
-
-    // klasy roślinności
-
+    public class Tree : Plant
+    {
+        private string Texture = "tree.png";
+        public void Display(int x, int y)
+        {
+            Console.WriteLine($"Normalne drzewo (plik \"{Texture}\") znajduje się na pozycji {x},{y}");
+        }
+    }
+    public class Bush : Plant
+    {
+        private string Texture = "bush.png";
+        public void Display(int x, int y)
+        {
+            Console.WriteLine($"Krzak (plik \"{Texture}\") znajduje się na pozycji {x},{y}");
+        }
+    }
     public class PlantFactory
     {
         private Dictionary<Type, Plant> Plants = new Dictionary<Type, Plant>();
 
         public Plant GetPlant(Type type)
         {
-            // deklaracja zmiennej plant (bez wartości)
-
+            Plant plant = null;
             if (Plants.ContainsKey(type))
             {
-                // już był, więc ze słownika i komunikat
+                plant = Plants[type];
+                Console.WriteLine("Wykorzystuję istniejący obiekt");
             }
             else
             {
-                // a jeśli nie było takiego obiektu, to trzeba utworzyć - switch?
-                // i dodać do cache'u
+                Console.WriteLine($"Tworzę nowy obiekt typu {type}");
+                switch (type)
+                {
+                    case Type.Tree:
+                        plant = new Tree();
+                        break;
+                    case Type.LargeTree:
+                        plant = new LargeTree();
+                        break;
+                    case Type.Bush:
+                        plant = new Bush();
+                        break;
+                }
                 Plants.Add(type, plant);
-                Console.WriteLine("Tworzę nowy obiekt typu {0}", type);
             }
-
-            // obiekt oczywiście trzeba zwrócić z fabryki
+            return plant;
         }
     }
-
     class Program
     {
         static void Main(string[] args)
@@ -55,18 +72,30 @@ namespace Pylek
 
             var plant = factory.GetPlant(Type.Tree);
             plant.Display(0, 0);
+            Console.WriteLine("");
             plant = factory.GetPlant(Type.LargeTree);
             plant.Display(0, 7);
+            Console.WriteLine("");
             plant = factory.GetPlant(Type.Tree);
             plant.Display(3, 16);
+            Console.WriteLine("");
             plant = factory.GetPlant(Type.Bush);
             plant.Display(10, 9);
+            Console.WriteLine("");
             plant = factory.GetPlant(Type.Tree);
             plant.Display(7, 7);
-
-            // jak zwykle czegoś brakuje...
-
+            Console.WriteLine("");
+            plant = factory.GetPlant(Type.LargeTree);
+            plant.Display(20, 0);
+            Console.WriteLine("");
+            plant = factory.GetPlant(Type.Tree);
+            plant.Display(3, 28);
+            Console.WriteLine("");
+            plant = factory.GetPlant(Type.Bush);
+            plant.Display(1, 5);
+            Console.WriteLine("");
+            plant = factory.GetPlant(Type.Tree);
+            plant.Display(8, 8);
         }
     }
-
 }
