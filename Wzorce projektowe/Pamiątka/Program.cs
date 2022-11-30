@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace Pamiatka
 {
 
     public interface IMovie
     {
-        //
-        //
-        //
+        public void Restore(IMemento memento);
+        public IMemento Save();
     }
 
     class BackToTheFuture : IMovie
@@ -17,23 +17,25 @@ namespace Pamiatka
 
         public BackToTheFuture(int year)
         {
-            // początkowa wartość
             Console.WriteLine("Początkowy rok: " + year);
         }
 
         public void SetYear(int year)
         {
-            // ustawia pole na właściwą wartość
-            // print
+            this.Year = year;
+            Console.WriteLine("Rok zmieniony na: " + year);
         }
 
         public IMemento Save()
         {
+            Console.WriteLine("Zapisano pamiątkę z roku: " + this.Year);
             return new Memento(this.Year);
         }
 
         public void Restore(IMemento memento)
         {
+            this.Year = memento.GetYear();
+            Console.WriteLine("Przywrócony rok: " + this.Year);
             // przywraca wartość pola
             // print o przywróceniu
         }
@@ -41,18 +43,22 @@ namespace Pamiatka
 
     public interface IMemento
     {
-        //
+        public int GetYear();
+
     }
 
     class Memento : IMemento
     {
         private int Year;
 
-        // konstruktor
+        public Memento(int Year)
+        {
+            this.Year = Year;
+        }
 
         public int GetYear()
         {
-            // zwraca rok
+            return Year;
         }
     }
 
@@ -60,7 +66,8 @@ namespace Pamiatka
     {
         private List<IMemento> Mementos = new List<IMemento>();
 
-        private // pole o nazwie?
+        private IMovie movie;
+
 
         public Caretaker(IMovie movie)
         {
@@ -69,15 +76,25 @@ namespace Pamiatka
 
         public void Save()
         {
+            Mementos.Add(movie.Save());
+            //?? :
+            //Mementos.Add(
             // dodaje pamiętkę do listy pamiątek
-            // print o zapisie
         }
 
         public void Undo()
         {
-            // print jeśli nie ma pamiątek do przywrócenia
-
-            var memento = this.Mementos[this.Mementos.Count - 1];
+            if (Mementos.Count == 0)
+            {
+                Console.WriteLine("Nie można cofnąć - brak zapisanych danych");
+            }
+            else
+            {
+                var memento = this.Mementos[this.Mementos.Count - 1];
+                movie.Restore(memento);
+                Mementos.RemoveAt(Mementos.Count - 1);
+            }
+            //var memento = this.Mementos[this.Mementos.Count - 1];
 
             // wyciągniętą pamiątkę trzeba skasować
             // i przywrócić (metoda)
