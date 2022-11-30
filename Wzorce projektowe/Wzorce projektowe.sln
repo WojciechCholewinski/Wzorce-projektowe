@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pełnomocnik 1", "Pełnomoc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pełnomocnik 2", "Pełnomocnik 2\Pełnomocnik 2.csproj", "{E5D7BCC8-052F-434C-9EE4-31BB15B982E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pyłek", "Pyłek\Pyłek.csproj", "{26C43056-11EC-4294-A00C-9827129560CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pyłek", "Pyłek\Pyłek.csproj", "{26C43056-11EC-4294-A00C-9827129560CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pamiątka", "Pamiątka\Pamiątka.csproj", "{E5F511E0-9337-420D-B391-4E29E4D8FFBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{26C43056-11EC-4294-A00C-9827129560CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26C43056-11EC-4294-A00C-9827129560CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26C43056-11EC-4294-A00C-9827129560CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5F511E0-9337-420D-B391-4E29E4D8FFBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F511E0-9337-420D-B391-4E29E4D8FFBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F511E0-9337-420D-B391-4E29E4D8FFBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F511E0-9337-420D-B391-4E29E4D8FFBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
