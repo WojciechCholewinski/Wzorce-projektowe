@@ -13,26 +13,33 @@ namespace Odwiedzajacy
 
     public class PolishCity : ICity
     {
-        /* UZUPEŁNIĆ */
+        public string City;
 
         public PolishCity(string city)
         {
             City = city;
         }
 
+        public void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
     }
 
 
     public class NetherlandCity : ICity
     {
+        public string City;
 
-        /* UZUPEŁNIĆ */
+        public NetherlandCity(string city)
+        {
+            City = city;
+        }
 
         public void Accept(IVisitor visitor)
         {
             visitor.Visit(this);
         }
-
     }
 
 
@@ -41,25 +48,31 @@ namespace Odwiedzajacy
 
         public string City;
 
-        /* UZUPEŁNIĆ */
+        public USACity(string city)
+        {
+            City = city;
+        }
 
+        public void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
     }
 
 
     public interface IVisitor
     {
-
-        /* UZUPEŁNIĆ */
-
+        void Visit(PolishCity element);
+        void Visit(NetherlandCity element);
         void Visit(USACity element);
-
     }
 
 
     class Visitor : IVisitor
     {
 
-        /* UZUPEŁNIĆ */
+        private int PolishCounter = 0;
+        private int NetherlandCounter = 0;
         private int USACounter = 0;
 
         public void Visit(PolishCity element)
@@ -68,7 +81,17 @@ namespace Odwiedzajacy
             PolishCounter++;
         }
 
-        /* UZUPEŁNIĆ */
+        public void Visit(NetherlandCity element)
+        {
+            Console.WriteLine($"Odwiedzam {element.City}");
+            NetherlandCounter++;
+        }
+
+        public void Visit(USACity element)
+        {
+            Console.WriteLine($"Odwiedzam {element.City}");
+            USACounter++;
+        }
 
         public void PrintInfo()
         {
@@ -99,14 +122,24 @@ namespace Odwiedzajacy
 
             List<ICity> components = new List<ICity>{
         new PolishCity("Kraków"),
-        /* UZUPEŁNIĆ */
+        new PolishCity("Szczecin"),
+        new PolishCity("Rzeszów"),
+        new PolishCity("Gdańsk"),
+        new PolishCity("Katowice"),
+        new NetherlandCity("Maastricht"),
+        new NetherlandCity("Amsterdam"),
+        new USACity("Nowy Jork"),
+        new USACity("Waszyngton"),
+        new USACity("Boston"),
+        new USACity("Princeton"),
+        new USACity("Seattle"),
+        new USACity("Chicago"),
         new USACity("Huston"),
-            };
-
+        };
             var visitor = new Visitor();
             Client.ClientCode(components, visitor);
             visitor.PrintInfo();
         }
     }
-
 }
+
