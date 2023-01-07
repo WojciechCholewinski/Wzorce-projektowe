@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pyłek", "Pyłek\Pyłek.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pamiątka", "Pamiątka\Pamiątka.csproj", "{E5F511E0-9337-420D-B391-4E29E4D8FFBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obserwator", "Obserwator\Obserwator.csproj", "{065654D8-3242-4C0B-8963-3E78A9304498}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Obserwator", "Obserwator\Obserwator.csproj", "{065654D8-3242-4C0B-8963-3E78A9304498}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odwiedzający", "Odwiedzający\Odwiedzający.csproj", "{EDE86B9C-4D64-4CE5-B67B-A1A28ED48481}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{065654D8-3242-4C0B-8963-3E78A9304498}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{065654D8-3242-4C0B-8963-3E78A9304498}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{065654D8-3242-4C0B-8963-3E78A9304498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDE86B9C-4D64-4CE5-B67B-A1A28ED48481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE86B9C-4D64-4CE5-B67B-A1A28ED48481}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE86B9C-4D64-4CE5-B67B-A1A28ED48481}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE86B9C-4D64-4CE5-B67B-A1A28ED48481}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
