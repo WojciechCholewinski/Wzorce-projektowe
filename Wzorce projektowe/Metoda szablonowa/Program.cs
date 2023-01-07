@@ -5,9 +5,9 @@ namespace Metoda_szablonowa
     abstract class ZamowienieTemplatka
     {
 
-        //
-        //
-        //
+        public abstract void doKoszyk();
+        public abstract void doPlatnosc();
+        public abstract void doDostawa();
 
         public void dodanieGratisu()
         {
@@ -16,9 +16,13 @@ namespace Metoda_szablonowa
 
         public void przetwarzajZamowienie(bool czyGratis)
         {
-            //
-            //
-            //
+            doKoszyk();
+            doPlatnosc();
+            if (czyGratis)
+            {
+                dodanieGratisu();
+            }
+            doDostawa();
         }
     }
 
@@ -40,8 +44,27 @@ namespace Metoda_szablonowa
         override public void doDostawa()
         {
             Console.WriteLine("Wysyłka...");
+            Console.WriteLine();
         }
 
+    }
+
+    class ZamowienieStacjonarne : ZamowienieTemplatka
+    {
+        public override void doKoszyk()
+        {
+            Console.WriteLine("Wybranie produktów...");
+        }
+
+        public override void doPlatnosc()
+        {
+            Console.WriteLine("Płatność w kasie (karta/gotówka)...");
+        }
+
+        public override void doDostawa()
+        {
+            Console.WriteLine("Wydanie produktów (odbiór osobisty)...");
+        }
     }
 
 
@@ -49,12 +72,12 @@ namespace Metoda_szablonowa
     {
         public static void Main(string[] args)
         {
-            //
-            //
-            //
+            ZamowienieTemplatka zamowienieOnline = new ZamowienieOnline();
+            zamowienieOnline.przetwarzajZamowienie(true);
 
             ZamowienieTemplatka zamowienieStacjonarne = new ZamowienieStacjonarne();
             zamowienieStacjonarne.przetwarzajZamowienie(false);
+
         }
     }
 }
