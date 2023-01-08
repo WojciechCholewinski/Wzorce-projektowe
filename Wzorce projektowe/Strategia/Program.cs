@@ -1,133 +1,152 @@
 ﻿using System;
 
-namespace Strategia
+abstract class Zawodnik
 {
-    abstract class Zawodnik
+    KopniecieTyp kopniecieTyp;
+    SkokTyp skokTyp;
+
+    public Zawodnik(KopniecieTyp kopniecieTyp, SkokTyp skokTyp)
     {
-
-        KopniecieTyp kopniecieTyp;
-        SkokTyp skokTyp;
-
-        public Zawodnik(KopniecieTyp kopniecieTyp, SkokTyp skokTyp)
-        {
-            /* UZUPEŁNIĆ */
-        }
-
-        public void uderzenie()
-        {
-            Console.WriteLine("Uderzenie");
-        }
-
-        public void kopniecie()
-        {
-            kopniecieTyp.kopniecie();
-        }
-
-        public void skok()
-        {
-            skokTyp.skok();
-        }
-
-        public void ustawKopniecieTyp(KopniecieTyp kopniecieTyp)
-        {
-            /* UZUPEŁNIĆ */
-        }
-
-        public void ustawSkokTyp(SkokTyp skokTyp)
-        {
-            /* UZUPEŁNIĆ */
-        }
-
-        /* UZUPEŁNIĆ */
-
+        this.kopniecieTyp = kopniecieTyp;
+        this.skokTyp = skokTyp;
     }
 
-
-    interface KopniecieTyp
+    public void uderzenie()
     {
-
-        void kopniecie();
-
+        Console.WriteLine("Uderzenie");
     }
 
-
-    class KopniecieLod : KopniecieTyp
+    public void kopniecie()
     {
-
-        /* UZUPEŁNIĆ */
-
+        kopniecieTyp.kopniecie();
     }
 
-    //
-    //
-    //
-
-    interface SkokTyp
+    public void skok()
     {
-
-        void skok();
-
+        skokTyp.skok();
     }
 
-
-    //
-    //
-    //
-
-    //
-    //
-    //
-
-
-    class SubZero : Zawodnik
+    public void ustawKopniecieTyp(KopniecieTyp kopniecieTyp)
     {
-
-        /* UZUPEŁNIĆ - KONSTRUKTOR */
-
-
-        override public void przedstaw()
-        {
-            Console.WriteLine("Jestem Sub-Zero!");
-        }
-
+        this.kopniecieTyp = kopniecieTyp;
     }
 
-
-    //
-    //
-    //
-    //
-    //
-
-
-
-    class MainClass
+    public void ustawSkokTyp(SkokTyp skokTyp)
     {
+        this.skokTyp = skokTyp;
+    }
 
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("-- Mortal Kombat --");
-            Console.WriteLine();
+    public abstract void przedstaw();
+}
 
-            //
-            //
-            KopniecieTyp kopniecieLod = new KopniecieLod();
-            KopniecieTyp kopniecieOgien = new KopniecieOgien();
+interface KopniecieTyp
+{
 
+    void kopniecie();
 
-            Zawodnik subZero = new SubZero(kopniecieLod, krotkiSkok);
-            subZero.przedstaw();
-            subZero.uderzenie();
-            subZero.kopniecie();
-            subZero.skok();
-            subZero.ustawSkokTyp(dlugiSkok);
-            subZero.skok();
+}
 
-            //
-            //
-            //
+class KopniecieLod : KopniecieTyp
+{
 
-        }
+    public void kopniecie()
+    {
+        Console.WriteLine("Kopniecie lodowe");
+    }
 
+}
+
+class KopniecieOgien : KopniecieTyp
+{
+
+    public void kopniecie()
+    {
+        Console.WriteLine("Kopniecie z ogniem");
+    }
+
+}
+
+interface SkokTyp
+{
+
+    void skok();
+
+}
+
+class KrotkiSkok : SkokTyp
+{
+
+    public void skok()
+    {
+        Console.WriteLine("Krotki skok");
+    }
+
+}
+
+class DlugiSkok : SkokTyp
+{
+
+    public void skok()
+    {
+        Console.WriteLine("Dlugi skok");
+    }
+
+}
+
+class SubZero : Zawodnik
+{
+
+    public SubZero(KopniecieTyp kopniecieTyp, SkokTyp skokTyp) : base(kopniecieTyp, skokTyp) { }
+
+    public override void przedstaw()
+    {
+        Console.WriteLine("Jestem Sub-Zero!");
+    }
+
+}
+
+class Scorpion : Zawodnik
+{
+
+    public Scorpion(KopniecieTyp kopniecieTyp, SkokTyp skokTyp) : base(kopniecieTyp, skokTyp) { }
+
+    public override void przedstaw()
+    {
+        Console.WriteLine("Jestem Scorpion!");
+    }
+
+}
+
+class MainClass
+{
+
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("-- Mortal Kombat --");
+        Console.WriteLine();
+        SkokTyp krotkiSkok = new KrotkiSkok();
+        SkokTyp dlugiSkok = new DlugiSkok();
+
+        KopniecieTyp kopniecieLod = new KopniecieLod();
+        KopniecieTyp kopniecieOgien = new KopniecieOgien();
+        Zawodnik subZero = new SubZero(kopniecieLod, krotkiSkok);
+        subZero.przedstaw();
+        subZero.uderzenie();
+        subZero.kopniecie();
+        subZero.skok();
+        subZero.ustawSkokTyp(dlugiSkok);
+        subZero.skok();
+
+        Console.WriteLine();
+
+        Zawodnik scorpion = new Scorpion(kopniecieOgien, dlugiSkok);
+        scorpion.przedstaw();
+        scorpion.uderzenie();
+        scorpion.kopniecie();
+        scorpion.ustawKopniecieTyp(kopniecieLod);
+        scorpion.kopniecie();
+        scorpion.skok();
     }
 }
+
+
