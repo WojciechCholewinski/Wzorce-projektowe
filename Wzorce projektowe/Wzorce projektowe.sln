@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediator", "Mediator\Mediat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polecenie", "Polecenie\Polecenie.csproj", "{0D26FBB1-6946-4A8F-BDE4-19380AC98C7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stan", "Stan\Stan.csproj", "{53A215C1-4B4C-467E-A7C6-5F9ECD7CFF79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{0D26FBB1-6946-4A8F-BDE4-19380AC98C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D26FBB1-6946-4A8F-BDE4-19380AC98C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D26FBB1-6946-4A8F-BDE4-19380AC98C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53A215C1-4B4C-467E-A7C6-5F9ECD7CFF79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53A215C1-4B4C-467E-A7C6-5F9ECD7CFF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53A215C1-4B4C-467E-A7C6-5F9ECD7CFF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53A215C1-4B4C-467E-A7C6-5F9ECD7CFF79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
