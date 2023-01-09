@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polecenie", "Polecenie\Pole
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stan", "Stan\Stan.csproj", "{53A215C1-4B4C-467E-A7C6-5F9ECD7CFF79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Łańcuch zobowiązań", "Łańcuch zobowiązań\Łańcuch zobowiązań.csproj", "{D6C20797-8EA5-4891-A8D5-793CEC82CDD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{53A215C1-4B4C-467E-A7C6-5F9ECD7CFF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53A215C1-4B4C-467E-A7C6-5F9ECD7CFF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53A215C1-4B4C-467E-A7C6-5F9ECD7CFF79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C20797-8EA5-4891-A8D5-793CEC82CDD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C20797-8EA5-4891-A8D5-793CEC82CDD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C20797-8EA5-4891-A8D5-793CEC82CDD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C20797-8EA5-4891-A8D5-793CEC82CDD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
