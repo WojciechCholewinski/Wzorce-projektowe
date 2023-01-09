@@ -5,8 +5,8 @@ namespace Łańcuch_zobowiązań
 {
     public interface IHandler
     {
-        // 2 metody
-        //
+        IHandler SetNext(IHandler handler);
+        void Handle(string request);
     }
 
     public abstract class AbstractHandler : IHandler
@@ -15,17 +15,20 @@ namespace Łańcuch_zobowiązań
 
         public IHandler SetNext(IHandler handler)
         {
-            //
+            _nextHandler = handler;
             return handler;
         }
 
         public virtual void Handle(string request)
         {
-
-            // jeśli uchwyt jest nullem to nikt nie je (i to wypisać)
-
-            // jeśli ma jakąś wartość, to trzeba przekazać kolejnemu zwierzakowi w hierarchii
-
+            if (_nextHandler != null)
+            {
+                _nextHandler.Handle(request);
+            }
+            else
+            {
+                Console.WriteLine($"Nikt nie chce tego zjeść: {request}");
+            }
         }
     }
 
@@ -35,7 +38,7 @@ namespace Łańcuch_zobowiązań
         {
             if (request == "banan")
             {
-                //
+                Console.WriteLine($"Małpa zjada {request}.");
             }
             else
             {
@@ -48,29 +51,57 @@ namespace Łańcuch_zobowiązań
     {
         public override void Handle(string request)
         {
-            if (request == "?????")
+            if (request == "orzech")
             {
                 Console.WriteLine($"Wiewiórka zjada {request}.");
             }
             else
             {
-                //
+                base.Handle(request);
             }
         }
     }
 
+    public class DogHandler : AbstractHandler
+    {
+        public override void Handle(string request)
+        {
+            if (request == "mięso" || request == "plasterek szynki")
+            {
+                Console.WriteLine($"Pies zjada {request}.");
+            }
+            else
+            {
+                base.Handle(request);
+            }
+        }
+    }
 
+    public class CatHandler : AbstractHandler
+    {
+        public override void Handle(string request)
+        {
+            if (request == "mięso")
+            {
+                Console.WriteLine($"Kot zjada {request}.");
+            }
+            else
+            {
+                base.Handle(request);
+            }
+        }
+    }
 
     public class Client
     {
         public static void ClientCode(AbstractHandler handler)
         {
-
-            // foreach po liście produktów (stringi)
-
-            // wewnątrz pytanie "Dto chce {food}?"
-            // i odpalenie właściwej metody na uchwycie
-
+            List<string> products = new List<string> { "orzech", "banan", "mięso", "plasterek szynki", "lody" };
+            foreach (var product in products)
+            {
+                Console.WriteLine($"Kto chce {product}?");
+                handler.Handle(product);
+            }
         }
     }
 
@@ -80,12 +111,15 @@ namespace Łańcuch_zobowiązań
         {
             AbstractHandler monkey = new MonkeyHandler();
             AbstractHandler squirrel = new SquirrelHandler();
-            // wszystkie zwierzaki?
+            AbstractHandler dog = new DogHandler();
+            AbstractHandler cat = new CatHandler();
 
-            monkey.SetNext(dog); // dokończyć łańcuch...
+            monkey.SetNext(dog).SetNext(squirrel).SetNext(cat);
+            squirrel.SetNext(cat);
 
             Console.WriteLine("Łańcuch: Małpa > Pies > Wiewiórka > Kot");
-            Client.ClientCode(monkey);
+            Client.ClientCode
+                (monkey);
             Console.WriteLine();
 
             Console.WriteLine("Podzbiór łańcucha: Wiewiórka > Kot");
@@ -93,4 +127,3 @@ namespace Łańcuch_zobowiązań
         }
     }
 }
-
