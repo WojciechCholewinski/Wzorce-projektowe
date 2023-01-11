@@ -22,6 +22,7 @@ namespace Dekorator
             Console.WriteLine("I need to pack:");
             RequiredEquipment.ForEach(x => Console.WriteLine(x));
             Console.WriteLine("Starting exercise");
+            Console.WriteLine();
         }
     }
 
@@ -66,14 +67,37 @@ namespace Dekorator
             base.JustDoIt();
         }
     }
+    public class GolfEquipment : ExerciseEquipmentDecorator
+    {
+        public GolfEquipment(IExercise exercise) : base(exercise)
+        {
+            exercise.AddEquipment("golf club");
+            exercise.AddEquipment("balls");
+        }
+
+        public override void JustDoIt()
+        {
+            Console.WriteLine("I'm about to play golf");
+            base.JustDoIt();
+        }
+    }
+
 
     class Program
     {
         static void Main(string[] args)
         {
-            var runningAndSwimming = new SwimmingPoolEquipment(new RunningEquipment(new Exercise()));
+            var swimming = new SwimmingPoolEquipment(new Exercise());
+            swimming.JustDoIt();
+
+            var runningAndSwimming = new RunningEquipment(new SwimmingPoolEquipment(new Exercise()));
             runningAndSwimming.JustDoIt();
+
+            var swimmingAndGolf = new SwimmingPoolEquipment(new GolfEquipment(new Exercise()));
+            swimmingAndGolf.JustDoIt();
+
         }
     }
 
 }
+
