@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dekorator", "Dekorator\Deko
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interpreter", "Interpreter\Interpreter.csproj", "{07DEDD91-88B0-4340-A180-BE23C37709FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Most", "Most\Most.csproj", "{1FF77475-B783-4E13-87B7-43FD585E2C68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{07DEDD91-88B0-4340-A180-BE23C37709FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07DEDD91-88B0-4340-A180-BE23C37709FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07DEDD91-88B0-4340-A180-BE23C37709FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FF77475-B783-4E13-87B7-43FD585E2C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FF77475-B783-4E13-87B7-43FD585E2C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FF77475-B783-4E13-87B7-43FD585E2C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FF77475-B783-4E13-87B7-43FD585E2C68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
