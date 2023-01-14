@@ -1,41 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Fasada
 {
-
     interface IUserService
     {
         void CreateUser(string email);
+        void RemoveUser(string email);
     }
 
     static class EmailNotification
     {
         public static void SendEmail(string to, string subject)
         {
-            Console.WriteLine("Sending an email");
+            Console.WriteLine(subject + " " + to);
         }
     }
 
     class UserRepository
     {
-        private readonly List<string> users = new List<string>
+        private static List<string> users = new List<string>
         {
             "john.doe@gmail.com", "sylvester.stallone@gmail.com"
         };
 
+
         public bool IsEmailFree(string email)
         {
-            throw new NotImplementedException();
-            //dopisz implementacje, która zwróci informacje o tym czy email jest dostępny
+            return !users.Contains(email);
         }
 
         public void AddUser(string email)
         {
-            throw new NotImplementedException();
-            //dopisz implementacje, która doda użytkownika do listy
+            users.Add(email);
         }
+        public void RemoveUser(string email)
+        {
+            users.Remove(email);
+        }
+        public int count = users.Count();
     }
 
     static class Validators
@@ -57,11 +62,27 @@ namespace Fasada
             {
                 throw new ArgumentException("Błędny email");
             }
-
-            // TODO: dodaj sprawdzenie czy email jest wolny, jeśli nie to wyrzuć wyjątek, jeśli tak, kontynuuj wykonywanie funkcji
+            if (!userRepository.IsEmailFree(email))
+            {
+                throw new ArgumentException("Email jest zajęty");
+            }
 
             userRepository.AddUser(email);
             EmailNotification.SendEmail(email, "Welcome to our service");
+        }
+        public void RemoveUser(string email)
+        {
+            if (!Validators.IsValidEmail(email))
+            {
+                throw new ArgumentException("Błędny email");
+            }
+            if (userRepository.IsEmailFree(email))
+            {
+                throw new ArgumentException("Nie ma takiego maila w bazie");
+            }
+
+            userRepository.RemoveUser(email);
+            EmailNotification.SendEmail(email, "Goodbye");
         }
     }
 
@@ -70,11 +91,11 @@ namespace Fasada
         static void Main(string[] args)
         {
             IUserService userService = new UserService();
-            // TODO: wyświetlić liczbę
+            Console.WriteLine("Aktualna liczba adresów: " + new UserRepository().count);
             userService.CreateUser("someemail@gmail.com");
-            // TODO: wyświetlić liczbę
-            // TODO: usunąć użytkownika
-            // TODO: wyświetlić liczbę
+            Console.WriteLine("Aktualna liczba adresów: " + new UserRepository().count);
+            userService.RemoveUser("john.doe@gmail.com");
+            Console.WriteLine("Aktualna liczba adresów: " + new UserRepository().count);
         }
     }
 
