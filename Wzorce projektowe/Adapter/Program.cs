@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
 
 namespace WzorzecAdapter
 {
-    //KOD Z ZEWNĘTRZNEJ BIBLIOTEKI
     public class UsersApi
     {
         public async Task<string> GetUsersXmlAsync()
@@ -18,11 +18,6 @@ namespace WzorzecAdapter
             return await Task.FromResult(doc.InnerXml);
         }
     }
-
-    //
-    // tu trzeba dopisać klasę zwracającą zawartość pliku csv w postaci stringa
-    // (jednego długiego, rozdzielanego znakami nowego wiersza)
-    //
 
 
     public interface IUserRepository
@@ -67,35 +62,76 @@ namespace WzorzecAdapter
 
     }
 
-    //
-    // tu trzeba dopisać własny adapter implementujący odpowiedni interfejs
-    //
+    public class UsersCsv
+    {
+        public List<List<string>> GetUsersCsv()
+        {
+            string path = "users.csv"; // ustaw ścieżkę do pliku csv
+            var lines = File.ReadAllLines(path);
+            List<List<string>> users = new List<List<string>>();
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var parts = lines[i].Split(',');
+                users.Add(new List<string> { parts[0], parts[1] });
+            }
+
+            return users;
+        }
+    }
+    public class UsersCsvAdapter : IUserRepository
+    {
+        private UsersCsv _adaptee = null;
+
+        public UsersCsvAdapter(UsersCsv adaptee)
+        {
+            _adaptee = adaptee;
+        }
+
+        public List<List<string>> GetUserNames()
+        {
+            return this._adaptee.GetUsersCsv();
+        }
+    }
 
     public class Program
     {
 
         static void Main(string[] args)
         {
-
             UsersApi usersRepository = new UsersApi();
-            IUserRepository adapter = new UsersApiAdapter(usersRepository);
+            IUserRepository apiAdapter = new UsersApiAdapter(usersRepository);
 
             Console.WriteLine("Użytkownicy z API:");
-            List<List<string>> users = adapter.GetUserNames();
+            List<List<string>> apiUsers = apiAdapter.GetUserNames();
             int i = 1;
-            users.ForEach(user => {
-                //
+            apiUsers.ForEach(user =>
+            {
+                Console.WriteLine(" " + i + ". " + user[0] + " " + user[1]);
+                i++;
             });
 
             Console.WriteLine();
 
-            // TODO: wyświetl w konsoli wynik działania obu adapterów
+            UsersCsv csvRepository = new UsersCsv();
+            IUserRepository csvAdapter = new UsersCsvAdapter(csvRepository);
 
             Console.WriteLine("Użytkownicy z CSV:");
 
-
-
+            //List<List<string>> csvUsers = csvAdapter.GetUserNames();
+            //i = 1;
+            //csvUsers.ForEach(user => {
+            //    Console.WriteLine(" " + i + ". " + user[0] + " " + user[1]);
+            //    i++;
+            List<List<string>> csvUsers = csvAdapter.GetUserNames();
+            i = 1;
+            csvUsers.ForEach(user =>
+            {
+                Console.WriteLine("{0,2}. {1} {2}", i, user[0], user[1]);
+                i++;
+            });
         }
+
 
     }
 
